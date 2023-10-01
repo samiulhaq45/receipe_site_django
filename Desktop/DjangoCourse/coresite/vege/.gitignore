@@ -1,0 +1,71 @@
+# Ignore system and user-specific files and directories
+.RapidMiner/
+.bash_history
+.conda/
+.condarc
+.continuum/
+.dotnet/
+.gitconfig
+.gitconfig.swp
+.gnutls/
+.ipython/
+.jupyter/
+.lesshst
+.matplotlib/
+.spyder-py3/
+.ssh/
+.viminfo
+.vscode/
+3D\ Objects/
+AppData/
+Contacts/
+.ipynb_checkpoints/
+CAR\ DETECTION\ PROJECT/
+COMPUTER-SCIENCE.pdf
+Coursera/
+DSAI/
+Django\ Tutoria.docx
+Django\ Tutorial/
+ECommerceSite/
+mysite/
+Git/
+Google\ Chrome.lnk
+Grammarly.lnk
+Internet\ Download\ Manager.lnk
+Linear\ Regression.py
+Machine\ Learning/
+Python/
+S13.doc
+Supervised\ Learning\ -\ Coursera/
+Timetable\ Fall\ 2023.xlsx
+Timetable\ Fall\ 2023.xlsx\ -\ Sheet1.pdf
+Tkinter-module-python/
+Visual\ Studio\ Code.lnk
+books\ collection/
+calculator.py
+desktop.ini
+git-cheat-sheet-education.pdf
+~$ango\ Tutoria.docx
+~$ango\ Tutorial.docx
+~WRL0621.tmp
+Documents/
+Downloads/
+Favorites/
+IntelGraphicsProfiles/
+Jedi/
+Links/
+Music/
+NTUSER.DAT
+NTUSER.DAT{af8fef8a-e361-11ea-b5a4-080027b87d2a}.TM.blf
+NTUSER.DAT{af8fef8a-e361-11ea-b5a4-080027b87d2a}.TMContainer00000000000000001.regtrans-ms
+NTUSER.DAT{af8fef8a-e361-11ea-b5a4-080027b87d2a}.TMContainer00000000000000002.regtrans-ms
+OneDrive/
+Pictures/
+Saved\ Games/
+Searches/
+Videos/
+anaconda3/
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
+source/
