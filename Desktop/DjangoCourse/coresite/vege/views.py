@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 
@@ -90,3 +92,44 @@ def update_receipe(request):
     context = {'receipes': receipe_list}
 
     return render(request, 'update_receipe.html', context)
+
+# login form for user
+def login(request):
+
+    return render(request, 'login.html')
+
+
+# signup form for user
+def signup(request):
+    if request.method == 'POST':
+
+        # collecting information from form and storing in a variable
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # checking if username already exist or not...
+        user = User.objects.filter(username = username)
+
+        if user.exists():
+            messages.info(request, 'Sorry! username is already taken.')
+            return redirect('/signup/')
+
+
+        # Creating user object 
+        user = User.objects.create(
+            first_name = first_name,
+            last_name = last_name,
+            username = username
+        )
+
+        # encrypting password
+        user.set_password(password)
+
+        # save created object
+        user.save()
+        messages.info(request, 'Account Created Successfully.')
+        return redirect('/signup/')
+
+    return render(request, 'signup.html')

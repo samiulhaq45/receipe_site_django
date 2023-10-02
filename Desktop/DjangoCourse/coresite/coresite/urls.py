@@ -31,7 +31,9 @@ urlpatterns = [
     path('delete-receipe/<id>/', delete_receipe, name="delete_receipe"), 
     path('update-item/<id>/', update_item, name='update_receipe'),
     path('view-all/', view_all, name='view-all'),
-    path('update-receipe/', update_receipe, name='update_receipe')
+    path('update-receipe/', update_receipe, name='update_receipe'),
+    path('login/', login, name='login'),
+    path('signup/', signup, name='signup'),
 ]
 
 
