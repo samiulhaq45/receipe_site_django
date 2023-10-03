@@ -32,8 +32,9 @@ urlpatterns = [
     path('update-item/<id>/', update_item, name='update_receipe'),
     path('view-all/', view_all, name='view-all'),
     path('update-receipe/', update_receipe, name='update_receipe'),
-    path('login/', login, name='login'),
+    path('login/', login_page, name='login_page'),
     path('signup/', signup, name='signup'),
+    path('logout/', log_out, name='logout')
 ]
 
 

@@ -3,10 +3,13 @@ from django.http import HttpResponse
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 # Logic for adding receipe to the list
+@login_required(login_url='/login/')
 def add_receipe(request):
     if request.method == "POST":
         data = request.POST
@@ -33,6 +36,7 @@ def add_receipe(request):
 
 
 # Logic for deleting receipe from the list
+@login_required(login_url='/login/')
 def delete_receipe(request, id):
     query_set = Receipe.objects.get(id = id)
     query_set.delete()
@@ -41,6 +45,7 @@ def delete_receipe(request, id):
 
 
 # Logic for updating individual item of the list
+@login_required(login_url='/login/')
 def update_item(request, id):
     query_set = Receipe.objects.get(id = id)
 
@@ -94,7 +99,27 @@ def update_receipe(request):
     return render(request, 'update_receipe.html', context)
 
 # login form for user
-def login(request):
+def login_page(request):
+    if request.method == 'POST':
+        # collecting information from form for authentication.
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Logic for displaying error message if username is not registered
+        if not User.objects.filter(username = username).exists():
+            messages.error(request, "Invalid Username.")
+            return redirect('/login/')
+        
+        # As we encrypt password during storing in database, this method is used to authenticate password.
+        user = authenticate(username = username, password = password)
+
+        if user is None:
+            messages.error(request, "Invalid Credentials.")
+            return redirect('/login/')
+        
+        else:
+            login(request, user)
+            return redirect('/view-all/')
 
     return render(request, 'login.html')
 
@@ -133,3 +158,8 @@ def signup(request):
         return redirect('/signup/')
 
     return render(request, 'signup.html')
+
+def log_out(request):
+    logout(request)
+
+    return redirect('/login/')
